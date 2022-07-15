@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Resources\CategoryResource;
+use App\Models\Category;
+use App\Http\Resources\StoryResource;
+use App\Models\Story;
+ 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/stories', function () {
+    return StoryResource::collection(Story::all());
+});
+
+Route::get('/categories', function () {
+    return CategoryResource::collection(Category::all());
 });
